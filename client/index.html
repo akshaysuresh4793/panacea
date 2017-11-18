@@ -1,0 +1,55 @@
+<html>
+	<!-- boostrap -->
+	<script src="js/vendor/jquery-1.9.1.js"></script>	
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+	
+	<!-- angularjs -->
+	<script src="js/vendor/angular.min.js"></script>
+	<script src="js/vendor/angular-route.min.js"></script>
+
+	<!-- routes and code -->
+	<script src="js/app.js"></script>
+	<script src="js/controller/MainController.js"></script>
+	<script src="js/controller/LoginController.js"></script>
+	<script src="js/controller/ProductController.js"></script>
+	<script src="js/controller/CalendarController.js"></script>
+	<body>
+		<div ng-app="panacea">
+			<div class="jumbotron">
+				<h1 align="center"> Panacea </h1>
+				<center><i>No more expiry...</i></center>
+			</div>
+			<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="#!/calendar">Calendar</a></li>
+        <li class="dropdown">
+          <a href="#!/product" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Add</a></li>
+            <li><a href="#">List</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+			<div ng-view>
+			</div>
+		</div>
+	</body>
+</html>
