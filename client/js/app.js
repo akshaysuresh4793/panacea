@@ -13,17 +13,26 @@ app.config(function($routeProvider) {
 		templateUrl : "calendar.html",
 		controller : "CalendarController"
 	})
-	.when("/product", {
-		templateUrl : "product.html",
+	.when("/products", {
+		templateUrl: "product.html",
+		controller: "ProductController"
+	})
+	.when("/product/new", {
+		templateUrl : "new.html",
 		controller : "ProductController" 
+	})
+	.when("/logout", {
+		templateUrl : "login.html",
+		controller : "LogoutController"
 	})
 })
 
 app.factory('dataFactory',['$http', function($http) {
-	var hostName = 'localhost';
+	var hostName = '172.17.0.3';
 	var port = '3000';
 	var protocol = 'http';
-	var baseUrl = protocol + "://" + hostName + ":" + port;
+	var api = "api";
+	var baseUrl = protocol + "://" + hostName + ":" + port + "/" + api;
 
 	var dataFactory = {};
 
@@ -33,7 +42,7 @@ app.factory('dataFactory',['$http', function($http) {
 	}
 
 	dataFactory.getProduct = function(id) {
-		return $http.get(baseUrl + "/" + "Products/" + id);
+		return $http.get(baseUrl + "/Houses" + "/" + id + "/" + "products");
 	}
 
 	dataFactory.insertProduct = function(obj) {
@@ -44,8 +53,8 @@ app.factory('dataFactory',['$http', function($http) {
 		return $http.put(baseUrl + "/" + "Products/" + id, obj);
 	}
 
-	dataFactory.deleteProduct = function(id) {
-		return $http.delete(baseUrl + "/" + "Products/" + id);
+	dataFactory.deleteProduct = function(id, fk) {
+		return $http.delete(baseUrl + "/Houses" + "/" + id + "/" + "products/" + fk);
 	}
 
 	 // People
@@ -88,16 +97,26 @@ app.factory('dataFactory',['$http', function($http) {
 
 	dataFactory.deleteHouse = function(id) {
         	return $http.delete(baseUrl + "/" + "Houses/" + id);
-	}	
+	}
+
+	dataFactory.login = function(obj) {
+		return $http.post(baseUrl + "/" + "Users/login", JSON.stringify(obj));
+	}
+
+	return dataFactory;	
 }]);
 
 app.service('utils',[function() {
 	utils = {}
 	utils.isLoggedIn = function(obj) {
-		console.log("Loggin in...");
 		if(localStorage.getItem("session") == null) {
 			window.location.href = "#!/login";
 		}
 	}
+
+	utils.getSession = function() {
+		utils.isLoggedIn();
+		return JSON.parse(localStorage.getItem("session"));	
+	}	
 	return utils;
 }])
