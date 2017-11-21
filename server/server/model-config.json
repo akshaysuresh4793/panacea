@@ -14,37 +14,37 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "backend"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": false
   },
   "House": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": true
   },
   "Person": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": true
   },
   "Product": {
-    "dataSource": "db",
+    "dataSource": "backend",
     "public": true
   }
 }
