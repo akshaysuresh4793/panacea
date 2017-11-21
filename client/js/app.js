@@ -1,4 +1,4 @@
-var app = angular.module('panacea', ["ngRoute"]);
+var app = angular.module('panacea', ["ngRoute","ui.calendar","ui.bootstrap"]);
 app.config(function($routeProvider) {
 	$routeProvider
 	.when("/", {
@@ -28,7 +28,7 @@ app.config(function($routeProvider) {
 })
 
 app.factory('dataFactory',['$http', function($http) {
-	var hostName = '172.17.0.3';
+	var hostName = '172.17.0.2';
 	var port = '3000';
 	var protocol = 'http';
 	var api = "api";
